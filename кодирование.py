@@ -68,10 +68,37 @@ def information():
             print("введите мощность алфавита, количество символов последовательно через пробел")
             N, K = map(int, input().split())
             return math.log2(N) * K
-    return
+    elif arg == 2:
+        print("известен ли инф вес символа? 1 - да, 0 - нет")
+        tr = bool(input())
+        if tr:
+            print("введите инф вес символа")
+            i = int(input())
+            return 2 ** i
+        else:
+            print("введиите инф объем текста, количество символов последовательно через пробел")
+            I, K = map(int,input().split())
+            return 2 ** (I // K)
+    elif arg == 3:
+        print("известен ли инф вес символа? 1 - да, 0 - нет")
+        tr = bool(input())
+        if tr:
+            print("введите иныф объем текста, инф вес символа последовательно через пробел")
+            I, i = map(int, input().split())
+            return I // i
+        else:
+            print("введите инф объем, мощность алфаввита поледовательно через пробел")
+            I, N = map(int,input().split())
+            return I // math.log2(N)
+    elif arg == 4:
+        print("введите мощность алфавита")
+        N = int(input())
+        return math.log2(N)
+    else:
+        return "неверные входные данные"
 
 def construct(a, arg):
-    #аргумент это та величина, из которой переводим
+    #аргумент это та величина, из которой переводим, пока вся фуцкция - сертвый код
     # 1 - байт, 2 - Кб, 3 - Мб, 4 - Гб
     if arg == 1:
         return a * 2 ** 3
