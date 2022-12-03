@@ -21,7 +21,8 @@
 - кодирование.py = python файл, решающий задачи на кодирование информации
 - drawing.svg = inkscape файл со смайликом
 - app.py = python файл прим поодержке flask
-
+- quiz.py = викторина на python
+- slideShow.py = moviepy python генератор видео
 
 
 
