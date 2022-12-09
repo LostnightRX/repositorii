@@ -23,6 +23,7 @@
 - app.py = python файл прим поодержке flask
 - quiz.py = викторина на python
 - slideShow.py = moviepy python генератор видео
+- branch.svg = картинка ветки из inkscape
 
 
 
