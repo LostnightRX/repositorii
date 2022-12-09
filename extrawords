@@ -1,12 +1,9 @@
-import random
-a=int(input('kolvo gl?'))
+a=list(input('ИМЯ?'))
 Sogl=['Й','Ц','К','Н','Г','Ш','Щ','З','Х','Ф','В','П','Р','Л','Д','Ж','Ч','С','М','Т','Б','й','ц','к','н','г','ш','щ','з','х','ф','в','п','л','д','ж','ч','с','м','т','б']
-gl=['а','е','и']
-word=[]
-b=''
-for i in range(a):
-    word.append(random.choice(Sogl))
-    word.append(gl[i])
-for i in range(len(word)):
-    b+=word[i]
-print(b)
+gl=['а','е','и','у','ы','о','э','я','и','ю','А','У','Е','Ы','О','Э','Я','И','Ю']
+ngl=[]
+for i in range(len(a)):
+    for b in range(len(gl)):
+        if a[i]==gl[b]:
+            ngl.append(a[i])
+print(ngl)
