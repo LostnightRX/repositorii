@@ -25,7 +25,7 @@
 - slideShow.py = moviepy python генератор видео
 - branch.svg = картинка ветки из inkscape
 - extrawords.py = генератор имен
-- hybrid1 и hybrid2 = фотки, сделанные нейросетью
+- hybridphoto1 и hybridphoto2 = фотки, сделанные нейросетью
 
 
 ~~~mermaid
