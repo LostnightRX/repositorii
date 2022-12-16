@@ -26,6 +26,7 @@
 - branch.svg = картинка ветки из inkscape
 - extrawords.py = генератор имен
 - hybridphoto1, hybridphoto2, hybridphoto3 = фотки, сделанные нейросетью
+- obyedinitel.py = сборник кода хемминга, операций с системами счисления и азбукой морзе
 
 
 ~~~mermaid
