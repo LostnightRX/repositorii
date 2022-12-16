@@ -107,3 +107,5 @@ def menu():
         else:
             des = False
     return
+if __name__ == '__main__':
+    menu()
