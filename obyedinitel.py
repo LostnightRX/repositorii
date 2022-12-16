@@ -68,7 +68,7 @@ def hemming():
         print(f"Код исправлен: символ {nums[imin]}")
     else:
         print(f"Код неверный")
-def ():
+def morse():
         abc=['А','Б','В','Г','Д','Е','Ж','З','И','Й','К','а','б','в','г','д','е','ж','з','и','й','к']
     ab=['._','-…','.--','--.','-..','.','…-','--..','..','.---','-.-','._','-…','.--','--.','-..','.','…-','--..','..','.---','-.-']
     word1=list(input())
@@ -77,3 +77,33 @@ def ():
         word2.append(ab[abc.index(word1[i])])
     B=''.join(word2)
     print(B)
+    return
+
+def menu():
+    des = True
+    print('привет, это сборная солянка, что хочешь увидеть?\n1 - перевод числа из 10-чной в N-ю \n2 - перевод числа из N-й в 10-ю\n3 - код хемминга\n4 - слово на азбуке морзе\n 5 - умножение чисел в различных системах счисления')
+    while(des):
+        arg = int(input())
+        match arg:
+            case 1:
+                systems()
+                break
+            case 2:
+                numSys()
+                break
+            case 3:
+                hemming()
+                break
+            case 4:
+                morse()
+                break
+            case 5:
+                operation()
+                break
+        print('хотите еще? 1 - да, 0 - нет')
+        res = int(input())
+        if res:
+            des = True
+        else:
+            des = False
+    return
