@@ -24,6 +24,7 @@
 - extrawords.py = генератор имен
 - hybridphoto1, hybridphoto2, hybridphoto3 = фотки, сделанные нейросетью
 - obyedinitel.py = сборник кода хемминга, операций с системами счисления и азбукой морзе
+- Морзянка(1).xlsx = excel таблица с азбукой Морзе
 
 
 ~~~mermaid
