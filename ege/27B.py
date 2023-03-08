@@ -1,14 +1,38 @@
 with open('27-B.txt') as f:
-    a=[int(x) for x in f]
-    l=len(a)
-    d=a+a
-    allcost=[]
-    res=0
-    for i in range(l,(l//2)):
-        cost=0
-        v=d[i:i+l]
-        for x in range(v):
-            cost+=v[x]*x
-        allcost.append(cost)
-     mi=min(allcost)
-            
+        s=[int(x) for x in f]
+        s.pop(0)
+    l=len(s)
+    sp=[]
+    s=s+s
+    start=0
+    finish=l #длина списка
+    step=50000
+    mini_old=0
+    while True:
+        sp=[]
+        for i in range(start,finish,step):
+            d=s[i:i+l]
+            cost=0
+            for x in range(l):
+                ind=x
+                if x>=l//2: ind=l-x
+                cost+=d[x]*ind
+            sp.append(cost)
+            print(i, cost)
+
+        index=sp.index(min(sp))
+        mini=start+index*step
+
+        print("точка минимума в диапазоне и стоимость", mini, min(sp))
+        if mini_old==mini and step==1:
+            print("Искомый ответ-", mini+1)
+            exit()
+
+        mini_old=mini
+        start=mini-step
+        finish=mini+step
+        step//=10
+        if step==0:step=1
+
+        print(start,finish,step)
+
