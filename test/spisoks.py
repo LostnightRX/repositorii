@@ -1,17 +1,23 @@
 import random
 def sort(isreverse):
     a = [int(random.random() * 100) for _ in range(int(input('количество элементов списка: ')))]
-    for j in range(len(a)):
-        maxa = 0
-        for i in range(len(a) - j):
-            if a[i] > maxa:
-                maxa = a[i]
-        a.append(a.pop(a.index(maxa)))
-        #print(a)                                   это можно использовать для отслеживания изменения списка
-    if isreverse:
-        a = a[::1]
-    else:
-        a = a[::-1]
+    #for j in range(len(a)):
+    #    maxa = 0
+    #    for i in range(len(a) - j):
+    #        if a[i] > maxa:
+    #            maxa = a[i]
+    #    a.append(a.pop(a.index(maxa)))                                                                                         закомментировано альтернативное решение
+    #if isreverse:
+    #    a = a[::1]
+    #else:
+    #    a = a[::-1]
+    #return a
+    while True:
+        if all(a[i] <= a[i + 1] for i in range(len(a) - 1)):
+               break
+        for i in range(len(a) - 1):
+            if a[i] > a[i + 1]:
+                a[i], a[i + 1] = a[i + 1], a[i]
     return a
 def binary():
     a = [25, 6, 4, 18, 32, 64, 124]
