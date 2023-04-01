@@ -7,7 +7,7 @@ def sort(isreverse):
             if a[i] > maxa:
                 maxa = a[i]
         a.append(a.pop(a.index(maxa)))
-        print(a)
+        #print(a)                                   это можно использовать для отслеживания изменения списка
     if isreverse:
         a = a[::1]
     else:
