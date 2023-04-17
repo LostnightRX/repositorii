@@ -75,6 +75,7 @@ done()
 #8
 '''
 from itertools import product
+
 k=0
 n='16 36 56 76 61 63 65 67'
 nn=n.split()
@@ -300,7 +301,8 @@ with open('27-B.txt') as f:
 layout = [[sg.Combo(s, default_value=s[0], s=(15,22), enable_events=True, readonly=True, k='-COMBO-', key='Combo'),
           sg.Output(s=(40,10), key='outputt')],
           [sg.Button('вывод', font=('Consolas', 12), button_color=('white', '#4CAF50'), key='process'),
-           sg.Button('сбежать', font=('Consolas', 12), button_color=('white', '#4CAF50'), key='exit')]]
+           sg.Button('сбежать', font=('Consolas', 12), button_color=('white', '#4CAF50'), key='exit'),
+           sg.Button('url', font = ('Consolas',12), button_color=('white', '#4CAF50'), key = 'url')]]
 
 # Create the window
 window = sg.Window('саратов by Степанов Михаил v1.0', layout)
@@ -319,7 +321,15 @@ while True:
         #print(choice)
         #window['outputt'].update('')
         window['outputt'].update(choice)
-    if event == 'exit':
+    elif event == 'url':
+        layout2 = [[sg.Text('прикол')], [sg.Button('cancel', font = ('Сonsolas', 12), button_color = ('white', '#4CAF50'))]]
+        window2 = sg.Window('это ссылки', layout2, )
+        while True:
+            event2 = window2.read()
+            if event2 == 'cancel' or event2 == sg.WINDOW_CLOSED:
+                window2.close()
+                break
+    elif event == 'exit':
         break
 
 # Close the window
