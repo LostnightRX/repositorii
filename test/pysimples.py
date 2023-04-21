@@ -322,7 +322,7 @@ while True:
         #window['outputt'].update('')
         window['outputt'].update(choice)
     elif event == 'url':
-        layout2 = [[sg.Text('прикол')], [sg.Button('cancel', font = ('Сonsolas', 12), button_color = ('white', '#4CAF50'))]]
+        layout2 = [[sg.Text('прикол')],enable_events = True, [sg.Button('cancel', font = ('Сonsolas', 12), button_color = ('white', '#4CAF50'))]]
         window2 = sg.Window('это ссылки', layout2, )
         while True:
             event2 = window2.read()
