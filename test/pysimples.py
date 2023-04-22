@@ -1,6 +1,13 @@
 import PySimpleGUI as sg
+import webbrowser
 
 sg.theme('LightBlue2')  # Set the theme
+
+urls = {
+    'папка с кодами':'https://github.com/LostnightRX/repositorii/tree/main/ege',
+}
+items = sorted(urls.keys())
+images = ['1.png', '2.png', '3.png','4.png','5.png','6.png','7.png','8.png','9.png','10.png','11.png','12.png','13.png','14.png','15.png','16.png','17.png','18.png','19.png','20.png','21.png','22.png','23.png', '24.png', '25.png','26.png','27a.png','27b.png']
 
 s=['1','2','3','4','5','6','7','8','9','10','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27a','27b']
 a=[
@@ -299,38 +306,47 @@ with open('27-B.txt') as f:
 ]
 # Define the layout
 layout = [[sg.Combo(s, default_value=s[0], s=(15,22), enable_events=True, readonly=True, k='-COMBO-', key='Combo'),
-          sg.Output(s=(40,10), key='outputt')],
-          [sg.Button('вывод', font=('Consolas', 12), button_color=('white', '#4CAF50'), key='process'),
-           sg.Button('сбежать', font=('Consolas', 12), button_color=('white', '#4CAF50'), key='exit'),
-           sg.Button('url', font = ('Consolas',12), button_color=('white', '#4CAF50'), key = 'url')]]
+          sg.Output(s=(30,10), key='outputt')],
+          [sg.Button('показать', font=('Consolas', 12), button_color=('white', '#4CAF50'), key='process'),
+           sg.Button('выход', font=('Consolas', 12), button_color=('white', '#4CAF50'), key='exit'),
+           sg.Button('url', font = ('Consolas',12), button_color=('white', '#4CAF50'), key = 'url')],[sg.Image('4.png', expand_x = True, expand_y = True)]]
 
 # Create the window
-window = sg.Window('саратов by Степанов Михаил v1.0', layout)
+window = sg.Window('справочник by Степанов Михаил v1.0', layout, finalize = True)
 
 # Event loop
 while True:
     event, values = window.read()
 
     # Exit the app when the window is closed
-    if event == sg.WINDOW_CLOSED:
+    if event == sg.WIN_CLOSED:
         break
 
     # Process the input and update the output when the button is clicked
     if event == 'process':
         choice=a[s.index(values['Combo'])]
+        photo = images[s.index(values['Combo'])]
+        layout = [[sg.Combo(s, default_value=s[0], s=(15,22), enable_events=True, readonly=True, k='-COMBO-', key='Combo'),
+          sg.Output(s=(30,10), key='outputt')],
+          [sg.Button('показать', font=('Consolas', 12), button_color=('white', '#4CAF50'), key='process'),
+           sg.Button('выход', font=('Consolas', 12), button_color=('white', '#4CAF50'), key='exit'),
+           sg.Button('url', font = ('Consolas',12), button_color=('white', '#4CAF50'), key = 'url')],[sg.Image(photo, expand_x = True, expand_y = True)]]
+    
         #print(choice)
         #window['outputt'].update('')
         window['outputt'].update(choice)
     elif event == 'url':
-        layout2 = [[sg.Text('прикол')],enable_events = True, [sg.Button('cancel', font = ('Сonsolas', 12), button_color = ('white', '#4CAF50'))]]
-        window2 = sg.Window('это ссылки', layout2, )
+        layout2 = [[sg.Text(txt, tooltip=urls[txt], enable_events=True, font='Consolas',
+            key=f'URL {urls[txt]}')] for txt in items]
+        window2 = sg.Window('полезное', layout2, size=(250, 50), finalize=True)
         while True:
-            event2 = window2.read()
-            if event2 == 'cancel' or event2 == sg.WINDOW_CLOSED:
-                window2.close()
+            event2, values2 = window2.read()
+            if event2 == sg.WIN_CLOSED:
                 break
+            elif event2.startswith("URL "):
+                url = event2.split(' ')[1]
+                webbrowser.open(url)
     elif event == 'exit':
         break
-
 # Close the window
 window.close()
