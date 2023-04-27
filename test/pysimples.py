@@ -309,7 +309,7 @@ layout = [[sg.Combo(s, default_value=s[0], s=(15,22), enable_events=True, readon
           sg.Output(s=(30,10), key='outputt')],
           [sg.Button('показать', font=('Consolas', 12), button_color=('white', '#4CAF50'), key='process'),
            sg.Button('выход', font=('Consolas', 12), button_color=('white', '#4CAF50'), key='exit'),
-           sg.Button('url', font = ('Consolas',12), button_color=('white', '#4CAF50'), key = 'url')],[sg.Image('4.png', expand_x = True, expand_y = True)]]
+           sg.Button('url', font = ('Consolas',12), button_color=('white', '#4CAF50'), key = 'url')],[sg.Image('4.png', expand_x = True, expand_y = True, key = 'img')]]
 
 # Create the window
 window = sg.Window('справочник by Степанов Михаил v1.0', layout, finalize = True)
@@ -326,12 +326,7 @@ while True:
     if event == 'process':
         choice=a[s.index(values['Combo'])]
         photo = images[s.index(values['Combo'])]
-        layout = [[sg.Combo(s, default_value=s[0], s=(15,22), enable_events=True, readonly=True, k='-COMBO-', key='Combo'),
-          sg.Output(s=(30,10), key='outputt')],
-          [sg.Button('показать', font=('Consolas', 12), button_color=('white', '#4CAF50'), key='process'),
-           sg.Button('выход', font=('Consolas', 12), button_color=('white', '#4CAF50'), key='exit'),
-           sg.Button('url', font = ('Consolas',12), button_color=('white', '#4CAF50'), key = 'url')],[sg.Image(photo, expand_x = True, expand_y = True)]]
-    
+        window['img'].update(photo)    
         #print(choice)
         #window['outputt'].update('')
         window['outputt'].update(choice)
@@ -342,6 +337,7 @@ while True:
         while True:
             event2, values2 = window2.read()
             if event2 == sg.WIN_CLOSED:
+                window2.close()
                 break
             elif event2.startswith("URL "):
                 url = event2.split(' ')[1]
